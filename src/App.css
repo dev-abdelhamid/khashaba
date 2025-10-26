@@ -1,0 +1,137 @@
+
+#root {
+  width: 100%;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.container-custom {
+  width: 100%;
+  max-width: 1280px;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+@media (min-width: 640px) {
+  .container-custom {
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .container-custom {
+    padding-left: 2rem;
+    padding-right: 2rem;
+  }
+}
+
+/* Animation keyframes */
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+@keyframes pulse {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Custom animations */
+.animate-float {
+  animation: float 5s ease-in-out infinite;
+}
+
+.animate-pulse {
+  animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+.animate-spin {
+  animation: spin 1s linear infinite;
+}
+
+.animate-fade-in-up {
+  opacity: 0;
+  animation: fadeInUp 0.6s ease-out forwards;
+}
+
+/* RTL specific adjustments */
+.rtl .ml-2 {
+  margin-left: 0;
+  margin-right: 0.5rem;
+}
+
+.rtl .ml-4 {
+  margin-left: 0;
+  margin-right: 1rem;
+}
+
+.rtl .mr-2 {
+  margin-right: 0;
+  margin-left: 0.5rem;
+}
+
+.rtl .mr-4 {
+  margin-right: 0;
+  margin-left: 1rem;
+}
+
+/* Global styles */
+.btn-primary {
+  @apply bg-dental-gold text-white py-3 px-6 rounded-md hover:bg-dental-darkGold transition-all duration-300 font-medium shadow-md hover:shadow-lg transform hover:-translate-y-1;
+}
+
+.btn-secondary {
+  @apply bg-transparent border-2 border-dental-gold text-dental-gold py-3 px-6 rounded-md hover:bg-dental-gold hover:text-white transition-all duration-300 font-medium;
+}
+
+/* Fix full width issues */
+body {
+  overflow-x: hidden;
+  width: 100%;
+}
+
+/* Font assignments based on language */
+.ar {
+  font-family: 'IBM Plex Sans Arabic', 'Cairo', sans-serif;
+}
+
+.en {
+  font-family: 'Poppins', 'Roboto', sans-serif;
+}
+
+.en h1, .en h2, .en h3, .en h4, .en h5, .en h6 {
+  font-family: 'Playfair Display', serif;
+}
+
+/* RTL/LTR language switcher effects */
+.page-rtl-transition {
+  transition: transform 0.5s ease-in-out;
+}
