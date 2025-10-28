@@ -7,6 +7,7 @@ import { Textarea } from "@/components/ui/textarea";
 import { z } from "zod";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
+import QuickBookingForm from "@/components/QuickBookingForm";
 import {
   Form, FormControl, FormField, FormItem, FormLabel, FormMessage
 } from "@/components/ui/form";
@@ -309,8 +310,7 @@ const Contact = memo(() => {
                     </CardContent>
                   </Card>
                 <div className="flex flex-col justify-between">
-                    <SimpleBookingForm />
-                  </div>
+<QuickBookingForm />                  </div>
                   
                    </div>
               </motion.div>
@@ -329,7 +329,29 @@ const Contact = memo(() => {
                   </p>
                 </div>
                 <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-                  <div className="flex flex-col justify-between">
+                
+                  <Card className="flex flex-col">
+                    <CardHeader>
+                      <CardTitle className="flex items-center justify-center text-dental-gold">
+                        {isRTL ? "نبذة عن الاستشارة الأونلاين" : "Note on Online Consultation"}
+                      </CardTitle>
+                    </CardHeader>
+                    <CardContent className="flex-grow text-center">
+                      <p className="mb-6 text-gray-600 dark:text-gray-300 font-medium">
+                        {isRTL ? "استشاراتنا الأونلاين مصممة بعناية لتوفير أقصى درجات الراحة، الكفاءة والخصوصية. إليك تفاصيل شاملة حول كيفية عملها لضمان تجربة مثالية:" : "Our online consultations are carefully designed to provide maximum comfort, efficiency, and privacy. Here are comprehensive details on how they work to ensure an ideal experience:"}
+                      </p>
+                      <ul className=" space-y-4 pl-5 rtl:pl-0 rtl:pr-5 text-gray-600 dark:text-gray-300 mx-auto max-w-md">
+                        <li>{isRTL ? "قدم تفاصيل دقيقة وشاملة عن حالتك الطبية للحصول على استشارة فعالة ومفيدة." : "Provide accurate and comprehensive details about your medical condition for an effective and beneficial consultation."}</li>
+                        <li>{isRTL ? "يمكن إرفاق صور، فيديوهات، أو ملفات للأسنان والفم إذا أمكن لتحسين التقييم." : "You can attach photos, videos, or files of your teeth and mouth if possible to improve the assessment."}</li>
+                        <li>{isRTL ? "الاستشارة تتم بواسطة الواتساب، مكالمة فيديو، أو تطبيقات أخرى آمنة حسب تفضيلك." : "The consultation is conducted via WhatsApp, video call, or other secure apps according to your preference."}</li>
+                        <li>{isRTL ? "ضمان خصوصية كاملة لجميع البيانات والمعلومات المقدمة أثناء الاستشارة." : "Full privacy guarantee for all data and information provided during the consultation."}</li>
+                        <li>{isRTL ? "إمكانية متابعة الاستشارة بزيارة حضورية إذا كانت الحالة تتطلب فحصًا مباشرًا." : "Possibility to follow up the consultation with an in-person visit if the case requires direct examination."}</li>
+                      </ul>
+                    </CardContent>
+                  </Card>
+
+
+                    <div className="flex flex-col  justify-between">
                     <AnimatePresence mode="wait">
                       {!consultationSubmitted ? (
                         <motion.div
@@ -340,7 +362,7 @@ const Contact = memo(() => {
                           key="consultationForm"
                         >
                           <Form {...consultationForm}>
-                            <form onSubmit={consultationForm.handleSubmit(onConsultationSubmit)} className="space-y-5 mt-4" dir={isRTL ? "rtl" : "ltr"}>
+                            <form onSubmit={consultationForm.handleSubmit(onConsultationSubmit)} className="space-y-5 mt-8" dir={isRTL ? "rtl" : "ltr"}>
                               <FormField
                                 control={consultationForm.control}
                                 name="name"
@@ -436,25 +458,6 @@ const Contact = memo(() => {
                       )}
                     </AnimatePresence>
                   </div>
-                  <Card className="flex flex-col">
-                    <CardHeader>
-                      <CardTitle className="flex items-center justify-center text-dental-gold">
-                        {isRTL ? "نبذة عن الاستشارة الأونلاين" : "Note on Online Consultation"}
-                      </CardTitle>
-                    </CardHeader>
-                    <CardContent className="flex-grow text-center">
-                      <p className="mb-6 text-gray-600 dark:text-gray-300 font-medium">
-                        {isRTL ? "استشاراتنا الأونلاين مصممة بعناية لتوفير أقصى درجات الراحة، الكفاءة والخصوصية. إليك تفاصيل شاملة حول كيفية عملها لضمان تجربة مثالية:" : "Our online consultations are carefully designed to provide maximum comfort, efficiency, and privacy. Here are comprehensive details on how they work to ensure an ideal experience:"}
-                      </p>
-                      <ul className=" space-y-4 pl-5 rtl:pl-0 rtl:pr-5 text-gray-600 dark:text-gray-300 mx-auto max-w-md">
-                        <li>{isRTL ? "قدم تفاصيل دقيقة وشاملة عن حالتك الطبية للحصول على استشارة فعالة ومفيدة." : "Provide accurate and comprehensive details about your medical condition for an effective and beneficial consultation."}</li>
-                        <li>{isRTL ? "يمكن إرفاق صور، فيديوهات، أو ملفات للأسنان والفم إذا أمكن لتحسين التقييم." : "You can attach photos, videos, or files of your teeth and mouth if possible to improve the assessment."}</li>
-                        <li>{isRTL ? "الاستشارة تتم بواسطة الواتساب، مكالمة فيديو، أو تطبيقات أخرى آمنة حسب تفضيلك." : "The consultation is conducted via WhatsApp, video call, or other secure apps according to your preference."}</li>
-                        <li>{isRTL ? "ضمان خصوصية كاملة لجميع البيانات والمعلومات المقدمة أثناء الاستشارة." : "Full privacy guarantee for all data and information provided during the consultation."}</li>
-                        <li>{isRTL ? "إمكانية متابعة الاستشارة بزيارة حضورية إذا كانت الحالة تتطلب فحصًا مباشرًا." : "Possibility to follow up the consultation with an in-person visit if the case requires direct examination."}</li>
-                      </ul>
-                    </CardContent>
-                  </Card>
                 </div>
               </motion.div>
             </TabsContent>
